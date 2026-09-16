@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-title: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.font-title {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+}
+
+.glassmorphism {
+  background: rgba(26, 8, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 45, 146, 0.22);
+}
+
+.glassmorphism-light {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shadow-neon {
+  box-shadow: 0 0 25px rgba(224, 40, 133, 0.35);
+}
+
+.shadow-neon-glow {
+  box-shadow: 0 0 35px rgba(255, 45, 146, 0.55);
+}
+
+.mascot-rim-glow {
+  filter: drop-shadow(0 0 20px rgba(255, 45, 146, 0.55)) drop-shadow(0 0 45px rgba(224, 40, 133, 0.25));
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Custom scrollbar hiding */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   CSS MEDIA QUERIES FOR ADAPTIVE LAYOUT
+   ========================================================================== */
+
+/* 1. Mobile Styles (Default & max-width: 639px) */
+@media (max-width: 639px) {
+  .app-container-adaptive {
+    width: 100%;
+    max-width: 440px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-card-adaptive {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .hero-mascot-adaptive {
+    width: 7.5rem;
+    height: 9.5rem;
+  }
+
+  .quick-tiles-adaptive {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.625rem;
+  }
+
+  .atelier-grid-adaptive {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .desktop-only-sidebar {
+    display: none;
+  }
+
+  .mobile-bottom-nav {
+    display: block;
+  }
+}
+
+/* 2. Tablet Styles (min-width: 640px and max-width: 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .app-container-adaptive {
+    width: 100%;
+    max-width: 720px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-card-adaptive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+
+  .hero-mascot-adaptive {
+    width: 11rem;
+    height: 13rem;
+  }
+
+  .quick-tiles-adaptive {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+
+  .atelier-grid-adaptive {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .desktop-only-sidebar {
+    display: none;
+  }
+
+  .mobile-bottom-nav {
+    display: block;
+  }
+}
+
+/* 3. Desktop Styles (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .app-container-adaptive {
+    width: 100%;
+    max-width: 1080px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .desktop-split-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .desktop-only-sidebar {
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  .hero-card-adaptive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .hero-mascot-adaptive {
+    width: 13rem;
+    height: 15rem;
+  }
+
+  .quick-tiles-adaptive {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .atelier-grid-adaptive {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
